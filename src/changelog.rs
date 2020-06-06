@@ -28,8 +28,7 @@ pub fn prepare(repo: &git2::Repository, tag: &git2::Tag) -> Result<String, git2:
     };
     let first_line = commit.message().unwrap().lines().nth(0).unwrap();
     let hash = commit.id().to_string();
-    let hash = &hash[0..6];
-    changelog.push_str(&format!("{} {}\n", hash.yellow(), first_line)[..]);
+    changelog.push_str(&format!("{} {}\n", hash, first_line)[..]);
   }
   Ok(changelog)
 }
